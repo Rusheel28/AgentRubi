@@ -44,20 +44,21 @@
     /* Navigation */
     .navbar {
       position: fixed;
-      top: 24px;
+      top: 16px;
       left: 0;
       right: 0;
       margin: 0 auto;
-      width: fit-content;
-      background-color: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(10px);
+      width: 95%;
+      max-width: 95%;
+      background-color: #000;
       border-radius: 9999px;
-      box-shadow: 0 0 20px rgba(0, 191, 255, 0.10);
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
       padding: 12px 24px;
-      display: flex;
-      align-items: center;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
       gap: 24px;
-      justify-content: center;
       z-index: 1000;
       transition: background var(--transition), box-shadow var(--transition), padding var(--transition), top 0.4s cubic-bezier(.4,0,.2,1);
     }
@@ -78,9 +79,12 @@
       gap: 0.5rem;
     }
     .nav-menu {
-      display: flex;
-      align-items: center;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: center !important;
       gap: 1.5rem;
+      flex: 1;
     }
     .nav-link {
       color: var(--text-main);
@@ -108,14 +112,14 @@
       bottom: -4px;
       transition: background var(--transition);
     }
-    .nav-cta {
-      background: var(--blue-dark);
+    .nav-cta, .cta-button {
+      background: #2563eb;
       color: #fff;
       font-weight: 600;
       border: none;
-      border-radius: 999px;
-      padding: 0.5rem 1rem;
-      font-size: 0.95rem;
+      border-radius: 9999px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
       cursor: pointer;
       box-shadow: 0 0 0 rgba(41,121,255,0.2);
       transition: box-shadow var(--transition), background var(--transition), color var(--transition);
@@ -123,31 +127,13 @@
       margin-left: 1.2rem;
       outline: none;
     }
-    .nav-cta:hover, .nav-cta:focus {
+    .nav-cta:hover, .nav-cta:focus, .cta-button:hover, .cta-button:focus {
       box-shadow: 0 0 16px 2px var(--blue-dark), 0 2px 8px 0 rgba(41,121,255,0.15);
       background: var(--blue);
       color: #fff;
     }
-    /* Hamburger menu for mobile */
     .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 36px;
-      height: 36px;
-      cursor: pointer;
-      margin-left: 1.5rem;
-      z-index: 1100;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 3px;
-      background: #fff;
-      margin: 4px 0;
-      border-radius: 2px;
-      transition: all 0.3s;
+      display: none !important;
     }
     /* Hero Section */
     .hero {
@@ -588,46 +574,39 @@
         gap: 1rem;
       }
     }
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .navbar, .navbar.shrink {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-        padding: 0.7rem 0.7rem;
+        padding: 8px 12px;
+        gap: 10px;
+        width: 98vw;
+        max-width: 99vw;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 8px;
+      }
+      .nav-logo {
+        font-size: 1rem;
       }
       .nav-menu {
-        gap: 1.2rem;
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: rgba(0,0,0,0.95);
-        border-radius: 0 0 18px 18px;
-        margin-top: 0.5rem;
-        padding: 1rem 0.5rem;
-        position: absolute;
-        left: 0;
-        top: 100%;
-        box-shadow: 0 8px 24px 0 rgba(0,191,255,0.10);
+        gap: 0.7rem;
       }
-      .nav-menu.open {
-        display: flex;
+      .nav-link, .nav-cta, .cta-button {
+        font-size: 0.9rem;
       }
-      .hamburger {
-        display: flex;
+    }
+    @media (max-width: 480px) {
+      .navbar, .navbar.shrink {
+        padding: 4px 6px;
+        gap: 4px;
+        border-radius: 18px;
+        max-width: 99vw;
       }
-      .nav-link, .nav-cta {
-        width: 100%;
-        text-align: left;
-        margin: 0.5rem 0;
+      .nav-logo {
+        font-size: 0.92rem;
       }
-      .hero-title {
-        font-size: 2rem;
-      }
-      .services-heading, .benefits-heading, .plans-heading, .calendar-heading, .faq-heading {
-        font-size: 1.3rem;
-      }
-      .footer {
-        font-size: 0.95rem;
+      .nav-link, .nav-cta, .cta-button {
+        font-size: 0.82rem;
+        padding: 6px 10px;
       }
     }
     @keyframes fadeInUp {
